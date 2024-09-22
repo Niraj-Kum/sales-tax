@@ -27,7 +27,7 @@ import java.util.stream.IntStream;
 */
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -40,15 +40,11 @@ public class Main {
                 String str = bufferedReader.readLine().trim();
                 receipt.addProduct(processInputAndCreateProduct(str));
             } catch (IOException e) {
-                System.out.println("Exception occurred while taking the input");
+                System.out.println("Exception occurred while reading the input");
             }
         });
 
-        try {
-            bufferedReader.close();
-        } catch (IOException e) {
-            System.out.println("Exception occurred while closing the buffered Reader");
-        }
+        bufferedReader.close();
 
         if(receipt.isReceiptValid()) {
             receipt.printReceipt();
